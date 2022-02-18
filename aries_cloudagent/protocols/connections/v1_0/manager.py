@@ -92,7 +92,7 @@ class ConnectionManager(BaseConnectionManager):
 
             {
                 "@type": "https://didcomm.org/connections/1.0/invitation",
-                "label": "Alice",
+                "label": "Ade",
                 "did": "did:sov:QmWbsNYhMrjHiqZDTUTEJs"
             }
 
@@ -102,7 +102,7 @@ class ConnectionManager(BaseConnectionManager):
 
             {
                 "@type": "https://didcomm.org/connections/1.0/invitation",
-                "label": "Alice",
+                "label": "Ade",
                 "did": "did:peer:oiSqsNYhMrjHiqZDTUthsw",
                 "recipient_keys": ["8HH5gYEeNc3z7PYXmd54d4x6qAfCNrqQqEB3nS7Zfu7K"],
                 "service_endpoint": "https://example.com/endpoint"

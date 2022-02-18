@@ -36,7 +36,7 @@ The following is an annotated list of PRs in the release, including a link to ea
     - fix DiscoveryExchangeRecord RECORD_TOPIC typo fix [#1566](https://github.com/hyperledger/aries-cloudagent-python/pull/1566)
   - Implement Revocation Notification v1.0 [#1464](https://github.com/hyperledger/aries-cloudagent-python/pull/1464)
   - Fix integration tests (revocation notifications) [#1528](https://github.com/hyperledger/aries-cloudagent-python/pull/1528)
-  - Add Revocation notification support to alice/faber [#1527](https://github.com/hyperledger/aries-cloudagent-python/pull/1527)
+  - Add Revocation notification support to ade/donance [#1527](https://github.com/hyperledger/aries-cloudagent-python/pull/1527)
 - **Other New Features**
   - Multiple Indy Ledger support and State Proof verification [#1425](https://github.com/hyperledger/aries-cloudagent-python/pull/1425)
     - Remove required dependencies from multi-ledger code that was requiring the import of Aries Askar even when not being used[#1550](https://github.com/hyperledger/aries-cloudagent-python/pull/1550)
@@ -61,7 +61,7 @@ The following is an annotated list of PRs in the release, including a link to ea
   - Fix warnings when generating ReadTheDocs [#1509](https://github.com/hyperledger/aries-cloudagent-python/pull/1509)
   - Remove Streetcred references [#1504](https://github.com/hyperledger/aries-cloudagent-python/pull/1504)
   - Add RTD configs to get generator working [#1496](https://github.com/hyperledger/aries-cloudagent-python/pull/1496)
-  - The Alice/Faber demo was updated to allow connections based on Public DIDs to be established, including reusing a connection if there is an existing connection. [#1574](https://github.com/hyperledger/aries-cloudagent-python/pull/1574)
+  - The Ade/Donance demo was updated to allow connections based on Public DIDs to be established, including reusing a connection if there is an existing connection. [#1574](https://github.com/hyperledger/aries-cloudagent-python/pull/1574)
 - **Other Fixes**
   - Connection Handling / Out of Band Invitations Fixes
     - OOB: Fixes issues with multiple public explicit invitation and unused 0160 connection [#1525](https://github.com/hyperledger/aries-cloudagent-python/pull/1525)
@@ -147,10 +147,10 @@ and ACA-Py takes care of the rest. Documentation of that feature is [here](Endor
   - fix: return type of inject [#1392](https://github.com/hyperledger/aries-cloudagent-python/pull/1392)
   - fix: typo in connection static result schema [#1389](https://github.com/hyperledger/aries-cloudagent-python/pull/1389)
   - fix: don't require push on outbound queue implementations [#1387](https://github.com/hyperledger/aries-cloudagent-python/pull/1387)
-- Updates/Fixes to the Alice/Faber demo and integration tests
-  - Clarify instructions in the Acme Controller Demo [#1484](https://github.com/hyperledger/aries-cloudagent-python/pull/1484)
+- Updates/Fixes to the Ade/Donance demo and integration tests
+  - Clarify instructions in the UniWest Controller Demo [#1484](https://github.com/hyperledger/aries-cloudagent-python/pull/1484)
   - Fix aip 20 behaviour and other cleanup [#1406](https://github.com/hyperledger/aries-cloudagent-python/pull/1406)
-  - Fix issue with startup sequence for faber agent [#1415](https://github.com/hyperledger/aries-cloudagent-python/pull/1415)
+  - Fix issue with startup sequence for donance agent [#1415](https://github.com/hyperledger/aries-cloudagent-python/pull/1415)
   - Connectionless proof demo [#1395](https://github.com/hyperledger/aries-cloudagent-python/pull/1395)
   - Typos in the demo's README.md [#1405](https://github.com/hyperledger/aries-cloudagent-python/pull/1405)
   - Run integration tests using external ledger and tails server [#1400](https://github.com/hyperledger/aries-cloudagent-python/pull/1400)
@@ -473,7 +473,7 @@ async with profile.session() as session:
 - Add CLI parameters for specifying additional properties of the printed connection invitation [#192](https://github.com/hyperledger/aries-cloudagent-python/pull/192)
 - Add support for explicitly setting the wallet credential ID on storage [#188](https://github.com/hyperledger/aries-cloudagent-python/pull/188)
 - Additional performance tracking and storage reductions [#187](https://github.com/hyperledger/aries-cloudagent-python/pull/187)
-- Handle connection invitations in base64 or URL format in the Alice demo agent [#186](https://github.com/hyperledger/aries-cloudagent-python/pull/186)
+- Handle connection invitations in base64 or URL format in the Ade demo agent [#186](https://github.com/hyperledger/aries-cloudagent-python/pull/186)
 - Add admin API methods to get and set the credential tagging policy for a credential definition ID [#185](https://github.com/hyperledger/aries-cloudagent-python/pull/185)
 - Allow querying of credentials for proof requests with multiple referents [#181](https://github.com/hyperledger/aries-cloudagent-python/pull/181)
 - Allow self-connected agents to issue credentials, present proofs [#179](https://github.com/hyperledger/aries-cloudagent-python/pull/179)
@@ -547,7 +547,7 @@ This is the first PyPI release. The history begins with the transfer of aca-py f
 - Fix repository name in badge links [#65](https://github.com/hyperledger/aries-cloudagent-python/pull/65)
 - Connection record is_ready refactor [#64](https://github.com/hyperledger/aries-cloudagent-python/pull/64)
 - Fix API instructions for cred def id [#58](https://github.com/hyperledger/aries-cloudagent-python/pull/58)
-- Updated API demo docs to use alice/faber scripts [#54](https://github.com/hyperledger/aries-cloudagent-python/pull/54)
+- Updated API demo docs to use ade/donance scripts [#54](https://github.com/hyperledger/aries-cloudagent-python/pull/54)
 - Updates to the readme for the demo to add PWD support [#53](https://github.com/hyperledger/aries-cloudagent-python/pull/53)
 - Swallow empty input in demo scripts [#51](https://github.com/hyperledger/aries-cloudagent-python/pull/51)
 - Set credential_exchange state when created from a cached credential request [#49](https://github.com/hyperledger/aries-cloudagent-python/pull/49)
@@ -560,7 +560,7 @@ This is the first PyPI release. The history begins with the transfer of aca-py f
 - New routing example document, typo corrections [#31](https://github.com/hyperledger/aries-cloudagent-python/pull/31)
 - More bad links [#30](https://github.com/hyperledger/aries-cloudagent-python/pull/30)
 - Links cleanup for the documentation [#29](https://github.com/hyperledger/aries-cloudagent-python/pull/29)
-- Alice-Faber demo update [#28](https://github.com/hyperledger/aries-cloudagent-python/pull/28)
+- Ade-Donance demo update [#28](https://github.com/hyperledger/aries-cloudagent-python/pull/28)
 - Deployment Model document [#27](https://github.com/hyperledger/aries-cloudagent-python/pull/27)
 - Plantuml source and images for documentation; w/image generator script [#26](https://github.com/hyperledger/aries-cloudagent-python/pull/26)
 - Move generated documentation. [#25](https://github.com/hyperledger/aries-cloudagent-python/pull/25)

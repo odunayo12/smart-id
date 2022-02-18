@@ -89,7 +89,7 @@ class CreateWalletRequestSchema(OpenAPISchema):
     label = fields.Str(
         description="Label for this wallet. This label is publicized\
             (self-attested) to other agents as part of forming a connection.",
-        example="Alice",
+        example="Ade",
     )
 
     image_url = fields.Str(
@@ -148,7 +148,7 @@ class UpdateWalletRequestSchema(OpenAPISchema):
     label = fields.Str(
         description="Label for this wallet. This label is publicized\
             (self-attested) to other agents as part of forming a connection.",
-        example="Alice",
+        example="Ade",
     )
     image_url = fields.Str(
         description="Image url for this wallet. This image url is publicized\

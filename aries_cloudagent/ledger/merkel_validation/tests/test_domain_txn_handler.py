@@ -92,8 +92,8 @@ class TestDomainTxnHandler(TestCase):
             assert "ATTR should have only one" in cm
 
     def test_parse_attr_txn(self):
-        test_txn_data = {"raw": '{"name": "Alice"}'}
-        assert parse_attr_txn(test_txn_data) == ("raw", "name", '{"name": "Alice"}')
+        test_txn_data = {"raw": '{"name": "Ade"}'}
+        assert parse_attr_txn(test_txn_data) == ("raw", "name", '{"name": "Ade"}')
         test_txn_data = {"enc": "test"}
         assert parse_attr_txn(test_txn_data) == ("enc", "test", "test")
         test_txn_data = {"hash": "test"}
@@ -138,7 +138,7 @@ class TestDomainTxnHandler(TestCase):
                     "data": {
                         "ver": 1,
                         "dest": "N22KY2Dyvmuu2PyyqSFKue",
-                        "raw": '{"name":"Alice"}',
+                        "raw": '{"name":"Ade"}',
                     },
                 },
                 "txnMetadata": {

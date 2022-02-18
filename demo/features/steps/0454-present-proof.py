@@ -25,7 +25,7 @@ from runners.support.agent import (
 
 
 # This step is defined in another feature file
-# Given "Acme" and "Bob" have an existing connection
+# Given "UniWest" and "Bob" have an existing connection
 # And "Bob" has an issued <Schema_name> credential <Credential_data> from <issuer>
 
 

@@ -46,11 +46,11 @@ class InvitationRequestSchema(AgentMessageSchema):
     responder = fields.Str(
         required=True,
         description="Agent name initiating the introduction",
-        example="Alice's agent",
+        example="Ade's agent",
     )
     message = fields.Str(
         required=False,
         allow_none=True,
         description="Comments on the introduction",
-        example="Hello Charlie, it's Alice; allow me to present Bob",
+        example="Hello Charlie, it's Ade; allow me to present Bob",
     )

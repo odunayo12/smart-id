@@ -26,7 +26,7 @@ from runners.support.agent import (
 
 
 # This step is defined in another feature file
-# Given "Acme" and "Bob" have an existing connection
+# Given "UniWest" and "Bob" have an existing connection
 
 
 @given('"{issuer}" is ready to issue a credential for {schema_name}')
@@ -181,7 +181,7 @@ def step_impl(context, issuer, holder, credential_data):
                         "type": ["PermanentResident"],
                         # let the holder set this
                         # "id": holder_agent["agent"].agent.did,
-                        "givenName": "ALICE",
+                        "givenName": "ADE",
                         "familyName": "SMITH",
                         "gender": "Female",
                         "birthCountry": "Bahamas",

@@ -12,7 +12,7 @@ from ...profile import AskarProfileManager
 from .. import v2 as test_module
 
 
-ALICE_KID = "did:example:alice#key-1"
+ADE_KID = "did:example:ade#key-1"
 BOB_KID = "did:example:bob#key-1"
 CAROL_KID = "did:example:carol#key-2"
 MESSAGE = b"Expecto patronum"
@@ -146,38 +146,38 @@ class TestAskarDidCommV2:
     @pytest.mark.asyncio
     async def test_1pu_round_trip(self, session: Session):
         alg = KeyAlg.X25519
-        alice_sk = Key.generate(alg)
-        alice_pk = Key.from_jwk(alice_sk.get_jwk_public())
+        ade_sk = Key.generate(alg)
+        ade_pk = Key.from_jwk(ade_sk.get_jwk_public())
         bob_sk = Key.generate(alg)
         bob_pk = Key.from_jwk(bob_sk.get_jwk_public())
 
         enc_message = test_module.ecdh_1pu_encrypt(
-            {BOB_KID: bob_pk}, ALICE_KID, alice_sk, MESSAGE
+            {BOB_KID: bob_pk}, ADE_KID, ade_sk, MESSAGE
         )
 
         # receiver must have the private keypair accessible
         await session.insert_key("my_sk", bob_sk, tags={"kid": BOB_KID})
         # for now at least, insert the sender public key so it can be resolved
-        await session.insert_key("alice_pk", alice_pk, tags={"kid": ALICE_KID})
+        await session.insert_key("ade_pk", ade_pk, tags={"kid": ADE_KID})
 
         plaintext, recip_kid, sender_kid = await test_module.unpack_message(
             session, enc_message
         )
         assert recip_kid == BOB_KID
-        assert sender_kid == ALICE_KID
+        assert sender_kid == ADE_KID
         assert plaintext == MESSAGE
 
     @pytest.mark.asyncio
     async def test_1pu_encrypt_x(self, session: Session):
         alg = KeyAlg.X25519
-        alice_sk = Key.generate(alg)
+        ade_sk = Key.generate(alg)
         bob_sk = Key.generate(alg)
         bob_pk = Key.from_jwk(bob_sk.get_jwk_public())
 
         with pytest.raises(
             test_module.DidcommEnvelopeError, match="No message recipients"
         ):
-            _ = test_module.ecdh_1pu_encrypt({}, ALICE_KID, alice_sk, MESSAGE)
+            _ = test_module.ecdh_1pu_encrypt({}, ADE_KID, ade_sk, MESSAGE)
 
         alt_sk = Key.generate(KeyAlg.P256)
         alt_pk = Key.from_jwk(alt_sk.get_jwk_public())
@@ -185,7 +185,7 @@ class TestAskarDidCommV2:
             test_module.DidcommEnvelopeError, match="key types must be consistent"
         ):
             _ = test_module.ecdh_1pu_encrypt(
-                {BOB_KID: bob_pk, "alt": alt_pk}, ALICE_KID, alice_sk, MESSAGE
+                {BOB_KID: bob_pk, "alt": alt_pk}, ADE_KID, ade_sk, MESSAGE
             )
 
         with async_mock.patch(
@@ -197,7 +197,7 @@ class TestAskarDidCommV2:
                 match="Error creating content encryption key",
             ):
                 _ = test_module.ecdh_1pu_encrypt(
-                    {BOB_KID: bob_pk}, ALICE_KID, alice_sk, MESSAGE
+                    {BOB_KID: bob_pk}, ADE_KID, ade_sk, MESSAGE
                 )
 
         with async_mock.patch(
@@ -209,14 +209,14 @@ class TestAskarDidCommV2:
                 match="Error encrypting",
             ):
                 _ = test_module.ecdh_1pu_encrypt(
-                    {BOB_KID: bob_pk}, ALICE_KID, alice_sk, MESSAGE
+                    {BOB_KID: bob_pk}, ADE_KID, ade_sk, MESSAGE
                 )
 
     @pytest.mark.asyncio
     async def test_1pu_decrypt_x(self):
         alg = KeyAlg.X25519
-        alice_sk = Key.generate(alg)
-        alice_pk = Key.from_jwk(alice_sk.get_jwk_public())
+        ade_sk = Key.generate(alg)
+        ade_pk = Key.from_jwk(ade_sk.get_jwk_public())
         bob_sk = Key.generate(alg)
 
         message_unknown_alg = JweEnvelope(
@@ -233,7 +233,7 @@ class TestAskarDidCommV2:
                 message_unknown_alg,
                 BOB_KID,
                 bob_sk,
-                alice_pk,
+                ade_pk,
             )
 
         message_unknown_enc = JweEnvelope(
@@ -247,7 +247,7 @@ class TestAskarDidCommV2:
             match="Unsupported ECDH-1PU content encryption",
         ):
             _ = test_module.ecdh_1pu_decrypt(
-                message_unknown_enc, BOB_KID, bob_sk, alice_pk
+                message_unknown_enc, BOB_KID, bob_sk, ade_pk
             )
 
         message_invalid_epk = JweEnvelope(
@@ -264,7 +264,7 @@ class TestAskarDidCommV2:
                 message_invalid_epk,
                 BOB_KID,
                 bob_sk,
-                alice_pk,
+                ade_pk,
             )
 
     @pytest.mark.asyncio
@@ -312,15 +312,15 @@ class TestAskarDidCommV2:
     @pytest.mark.asyncio
     async def test_unpack_message_1pu_x(self, session: Session):
         alg = KeyAlg.X25519
-        alice_sk = Key.generate(alg)
-        alice_pk = Key.from_jwk(alice_sk.get_jwk_public())
+        ade_sk = Key.generate(alg)
+        ade_pk = Key.from_jwk(ade_sk.get_jwk_public())
         bob_sk = Key.generate(alg)
         bob_pk = Key.from_jwk(bob_sk.get_jwk_public())
 
         # receiver must have the private keypair accessible
         await session.insert_key("my_sk", bob_sk, tags={"kid": BOB_KID})
         # for now at least, insert the sender public key so it can be resolved
-        await session.insert_key("alice_pk", alice_pk, tags={"kid": ALICE_KID})
+        await session.insert_key("ade_pk", ade_pk, tags={"kid": ADE_KID})
 
         message_1pu_no_skid = json.dumps(
             {
@@ -380,7 +380,7 @@ class TestAskarDidCommV2:
                     json.dumps(
                         {
                             "alg": "ECDH-1PU+A128KW",
-                            "skid": ALICE_KID,
+                            "skid": ADE_KID,
                             "apu": b64url("UNKNOWN"),
                         }
                     )

@@ -1,25 +1,25 @@
 #!/bin/bash
-# this runs the Faber example as a local instace of instance of aca-py
+# this runs the Donance example as a local instace of instance of aca-py
 # you need to run a local von-network (in the von-network directory run "./manage start <your local ip> --logs")
 # ... and you need to install the local aca-py python libraries locally ("pip install -r ../requriements.txt -r ../requirements.indy.txt -r ../requirements.bbs.txt")
 
 # the following will auto-respond on connection and credential requests, but not proof requests
 PYTHONPATH=.. ../bin/aca-py start \
    --endpoint http://127.0.0.1:8030 \
-   --label alice.agent \
+   --label ade.agent \
    --inbound-transport http 0.0.0.0 8030 \
    --outbound-transport http \
    --admin 0.0.0.0 8031 \
    --admin-insecure-mode \
    --wallet-type indy \
-   --wallet-name alice.agent420695 \
-   --wallet-key alice.agent420695 \
+   --wallet-name ade.agent420695 \
+   --wallet-key ade.agent420695 \
    --preserve-exchange-records \
    --auto-provision \
    --genesis-url http://localhost:9000/genesis \
    --trace-target log \
    --trace-tag acapy.events \
-   --trace-label alice.agent.trace \
+   --trace-label ade.agent.trace \
    --auto-ping-connection \
    --auto-respond-messages \
    --auto-accept-invites \

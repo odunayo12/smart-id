@@ -87,7 +87,7 @@ do
     continue
   ;;
   --bg)
-    if [ "${AGENT}" = "alice" ] || [ "${AGENT}" = "faber" ] || [ "${AGENT}" = "acme" ]; then
+    if [ "${AGENT}" = "ade" ] || [ "${AGENT}" = "donance" ] || [ "${AGENT}" = "uniWest" ]; then
       DOCKER_OPTS="-d"
       echo -e "\nRunning in ${AGENT} in the background. Note that you cannot use the command line console in this mode."
       echo To see the logs use: \"docker logs ${AGENT}\".
@@ -95,7 +95,7 @@ do
       echo To stop the agent, use: \"docker stop ${AGENT}\". The docker environment will
       echo -e "be removed on stop.\n\n"
     else
-      echo The "bg" option \(for running docker in detached mode\) is only for agents Alice, Faber and Acme.
+      echo The "bg" option \(for running docker in detached mode\) is only for agents Ade, Donance and UniWest.
       echo Ignoring...
     fi
     continue
@@ -106,7 +106,7 @@ do
 Usage:
    ./demo_run <agent> [OPTIONS]
 
-   - <agent> is one of alice, faber, acme, performance.
+   - <agent> is one of ade, donance, uniWest, performance.
    - Options:
       --events - display on the terminal the webhook events from the ACA-Py agent.
       --timing - at the end of the run, display timing; relevant to the "performance" agent.
@@ -125,16 +125,16 @@ EOF
   ARGS="${ARGS:+$ARGS }$i"
 done
 
-if [ "$AGENT" = "faber" ]; then
-  AGENT_MODULE="faber"
+if [ "$AGENT" = "donance" ]; then
+  AGENT_MODULE="donance"
   AGENT_PORT=8020
   AGENT_PORT_RANGE=8020-8029
-elif [ "$AGENT" = "alice" ]; then
-  AGENT_MODULE="alice"
+elif [ "$AGENT" = "ade" ]; then
+  AGENT_MODULE="ade"
   AGENT_PORT=8030
   AGENT_PORT_RANGE=8030-8039
-elif [ "$AGENT" = "acme" ]; then
-  AGENT_MODULE="acme"
+elif [ "$AGENT" = "uniWest" ]; then
+  AGENT_MODULE="uniWest"
   AGENT_PORT=8040
   AGENT_PORT_RANGE=8040-8049
 elif [ "$AGENT" = "performance" ]; then
@@ -142,12 +142,12 @@ elif [ "$AGENT" = "performance" ]; then
   AGENT_PORT=8050
   AGENT_PORT_RANGE=8050-8069
 else
-  echo "Please specify which agent you want to run. Choose from 'faber', 'alice', 'acme', or 'performance'."
+  echo "Please specify which agent you want to run. Choose from 'donance', 'ade', 'uniWest', or 'performance'."
   exit 1
 fi
 
 echo "Preparing agent image..."
-docker build -q -t faber-alice-demo -f ../docker/Dockerfile.demo .. || exit 1
+docker build -q -t donance-ade-demo -f ../docker/Dockerfile.demo .. || exit 1
 
 if [ ! -z "$DOCKERHOST" ]; then
   # provided via APPLICATION_URL environment variable
@@ -252,4 +252,4 @@ $DOCKER run --name $AGENT --rm -it ${DOCKER_OPTS} \
   -p 0.0.0.0:$AGENT_PORT_RANGE:$AGENT_PORT_RANGE \
   ${DOCKER_VOL} \
   $DOCKER_ENV \
-  faber-alice-demo $AGENT_MODULE --port $AGENT_PORT $ARGS
+  donance-ade-demo $AGENT_MODULE --port $AGENT_PORT $ARGS

@@ -15,7 +15,7 @@ from behave import given, then, when
 from runners.agent_container import AgentContainer
 
 # This step is defined in another feature file
-# Given "Acme" and "Bob" have an existing connection
+# Given "UniWest" and "Bob" have an existing connection
 
 
 @when('"{agent_name}" has a DID with role "{did_role}"')

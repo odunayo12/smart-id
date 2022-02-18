@@ -5321,7 +5321,7 @@
         },
         "label" : {
           "type" : "string",
-          "example" : "Alice",
+          "example" : "Ade",
           "description" : "Label for this wallet. This label is publicized            (self-attested) to other agents as part of forming a connection."
         },
         "wallet_dispatch_type" : {
@@ -6314,7 +6314,7 @@
           "description" : "Attribute names and value",
           "additionalProperties" : {
             "type" : "string",
-            "example" : "alice"
+            "example" : "ade"
           }
         },
         "cred_def_id" : {
@@ -9042,7 +9042,7 @@
         },
         "label" : {
           "type" : "string",
-          "example" : "Alice",
+          "example" : "Ade",
           "description" : "Label for this wallet. This label is publicized            (self-attested) to other agents as part of forming a connection."
         },
         "wallet_dispatch_type" : {

@@ -456,7 +456,7 @@ bbs_signed_cred_no_credsubjectid = [
                 "birthDate": "1958-07-17",
                 "familyName": "SMITH",
                 "gender": "Female",
-                "givenName": "ALICE",
+                "givenName": "ADE",
                 "type": ["PermanentResident", "Person"],
             },
             "issuanceDate": "2020-01-01T12:00:00Z",
